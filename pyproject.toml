@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "camus"
+version = "0.5.0"
+description = "Cell-type-aware demultiplexing and MAGeCK analysis for pooled CRISPR screens"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { file = "LICENSE" }
+authors = [{ name = "Can Ozcan" }]
+keywords = ["CRISPR", "MAGeCK", "demultiplexing", "functional genomics", "cell-type"]
+
+dependencies = [
+    "pandas>=1.3",
+    "numpy>=1.21",
+    "pyyaml>=5.4",
+    "matplotlib>=3.4",
+    "seaborn>=0.11",
+]
+
+[project.optional-dependencies]
+venn = ["matplotlib-venn>=0.11"]
+dev = ["pytest>=7.0"]
+
+[project.scripts]
+camus-demux = "camus.demux.demux_hash_table:main"
+
+[tool.setuptools.packages.find]
+include = ["camus*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

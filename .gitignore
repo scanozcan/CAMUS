@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+
+# CAMUS outputs
+pipeline_outputs*/
+visualizations*/
+*.log
+# standalone sim_experiment run outputs (generated; NOT the camus/demux source pkg)
+sim_experiment/demux/
+sim_experiment/results*/
+
+# local editor / Claude settings
+.claude/
+
+# Large data (keep these out of version control)
+*.fastq
+*.fastq.gz
+*.fq
+*.fq.gz

@@ -1,0 +1,39 @@
+experiment:
+  name: Multi_Condition_Screen
+  control:
+    name: Control
+    replicates: 3
+  conditions:
+  - name: Condition1
+    replicates: 3
+  - name: Condition2
+    replicates: 3
+  - name: Condition3
+    replicates: 3
+  cell_types:
+  - barcode: ATGCAGGG
+    name: Keratinocyte
+  - barcode: GTTGCAGC
+    name: Fibroblast
+  - barcode: ATAGCACG
+    name: Endothelial
+
+  # Read geometry + matching parameters used by the demultiplexer.
+  # All positions are 0-based.
+  geometry:
+    barcode_start: 22          # start of the cell-type barcode in R2
+    barcode_length: 8          # barcode length (also validates cell_types[].barcode)
+    grna_start: 12             # gRNA start in R1 (fixed-offset mode)
+    grna_length: 20            # gRNA length
+    max_barcode_mismatches: 1  # error-correction tolerance for barcodes
+    allow_grna_mismatch: true  # enable precomputed unique 1-mismatch gRNA lookup
+    min_qual: 0                # min Phred over barcode+gRNA windows (0 = off)
+    grna_anchor: null          # scaffold seq preceding the gRNA; enables anchor search
+    anchor_max_offset: 40      # how far into R1 to search for the anchor
+
+  # Optional: path to a non-targeting control sgRNA list (one sequence/ID per line)
+  # for MAGeCK control normalization. If omitted, the pipeline auto-detects
+  # controls by gene name from the demux output.
+  control_sgrna: null
+
+  library_config: default

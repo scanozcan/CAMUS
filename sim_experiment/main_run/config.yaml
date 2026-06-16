@@ -1,0 +1,44 @@
+experiment:
+  name: CAMUS_Sim_FullExperiment
+  # Full simulated experiment: 3 groups, each compared D21 vs its OWN initial baseline.
+  #   G1_prolif    pure proliferative culture        (prolif only)
+  #   G2_high_cin  pure high-CIN culture             (high_cin only)
+  #   G3_mixed     pooled co-culture, demuxed        (both cell types)
+
+  # Global cell-type catalog (name -> barcode). Groups reference these by name.
+  cell_types:
+  - name: prolif
+    barcode: ATGCAGGG
+  - name: high_cin
+    barcode: GTTGCAGC
+
+  groups:
+  - name: G1_prolif
+    cell_types: [prolif]
+    control: {name: initial, replicates: 3}
+    conditions:
+    - {name: D21, replicates: 3}
+  - name: G2_high_cin
+    cell_types: [high_cin]
+    control: {name: initial, replicates: 3}
+    conditions:
+    - {name: D21, replicates: 3}
+  - name: G3_mixed
+    cell_types: [prolif, high_cin]
+    control: {name: initial, replicates: 3}
+    conditions:
+    - {name: D21, replicates: 3}
+
+  geometry:
+    barcode_start: 22
+    barcode_length: 8
+    grna_start: 12
+    grna_length: 20
+    max_barcode_mismatches: 1
+    allow_grna_mismatch: true
+    min_qual: 0
+    grna_anchor: null
+    anchor_max_offset: 40
+
+  control_sgrna: null
+  library_config: default
